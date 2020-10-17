@@ -1,0 +1,6 @@
+.attach_pid*
+.classpath
+.project
+.settings/
+bin/
+
