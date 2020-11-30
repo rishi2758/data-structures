@@ -1,114 +1,83 @@
 package trie;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-public class WordSearchII
-{
+import trie.core.TrieNode;
 
-    class TrieNode
-    {
-        private HashMap<Character,TrieNode> prefixes;
+public class WordSearchII {
+	public List<String> findWords(char[][] board, String[] words) {
 
-        private boolean isWordEnd;
+		/** construct trie for given words **/
+		TrieNode<String> root = new TrieNode<>();
+		for (String word : words) {
+			TrieNode<String> node = root;
+			for (Character c : word.toCharArray()) {
+				if (!node.getPrefixes().containsKey(String.valueOf(c))) {
+					node.getPrefixes().put(c.toString(), new TrieNode<>());
+				}
+				node = node.getPrefixes().get(String.valueOf(c));
+			}
+			node.setWordEnd(true);
+			node.setWord(word);
+		}
 
-        private String word;
+		List<String> matching = new ArrayList<>();
+		int rows = board.length;
+		int cols = board[0].length;
+		for (int row = 0; row < rows; ++row) {
+			for (int col = 0; col < cols; ++col) {
+				if (root.getPrefixes().size() == 1) {
+					if (root.getPrefixes().containsKey(String.valueOf(board[row][col]))) {
+						matching.add(root.getPrefixes().get(String.valueOf(board[row][col])).getWord());
+						break;
+					}
+				}
+				if (root.getPrefixes().containsKey(String.valueOf(board[row][col]))) {
+					visit(board, row, col, root, matching);
+				}
+			}
+		}
+		return matching;
+	}
 
-        public TrieNode()
-        {
-            prefixes = new HashMap<>();
-            isWordEnd = false;
-            word = null;
-        }
+	private void visit(char[][] board, int row, int col, TrieNode<String> node, List<String> matching) {
 
-        @Override
-        public String toString()
-        {
-            return "TrieNode [prefixes=" + prefixes + ", isWordEnd=" + isWordEnd + ", word=" + word + "]";
-        }
-        
-    }
+		if (row < 0 || col < 0 || row == board.length || col >= board[0].length) {
+			return;
+		}
+		if (node.isWordEnd()) {
+			matching.add(node.getWord());
+			node.setWordEnd(false);
+			return;
+		}
+		if (node.getPrefixes().containsKey(String.valueOf(board[row][col]))) {
+			char restore = board[row][col];
+			String temp = String.valueOf(board[row][col]);
+			board[row][col] = '#';
+			visit(board, row, col + 1, node.getPrefixes().get(temp), matching);
+			visit(board, row, col - 1, node.getPrefixes().get(temp), matching);
+			visit(board, row - 1, col, node.getPrefixes().get(temp), matching);
+			visit(board, row + 1, col, node.getPrefixes().get(temp), matching);
+			board[row][col] = restore;
+		}
+	}
 
-    public List<String> findWords(char[][] board, String[] words)
-    {
+	public static void main(String[] args) {
+		/**
+		 * Input: board = [ ['o','a','a','n'], ['e','t','a','e'], ['i','h','k','r'],
+		 * ['i','f','l','v'] ] words = ["oath","pea","eat","rain"]
+		 * 
+		 * Output: ["eat","oath"]
+		 * 
+		 */
 
-        /** construct trie for given words **/
-        TrieNode root = new TrieNode();
-        for (String word : words) {
-            TrieNode node = root;
-            for (Character c : word.toCharArray()) {
-                if(!node.prefixes.containsKey(c)) {
-                    node.prefixes.put(c, new TrieNode());
-                }
-                node = node.prefixes.get(c);
-            }
-            node.isWordEnd = true;
-            node.word = word;
-        }
-        
-        List<String> matching = new ArrayList<>();
-        int rows = board.length;
-        int cols = board[0].length;
-        for (int row = 0; row < rows; ++row) {
-            for (int col = 0; col < cols; ++col) {
-                if(root.prefixes.size() == 1) {
-                   if(root.prefixes.containsKey(board[row][col])) {
-                       matching.add(root.prefixes.get(board[row][col]).word);
-                       break;
-                   }
-                }
-                if(root.prefixes.containsKey(board[row][col])) {
-                    visit(board, row, col, root, matching);
-                }
-            }
-        }
-        return matching;
-    }
-
-    private void visit(char[][] board, int row, int col, TrieNode node, List<String> matching)
-    {
-
-        if (row < 0 || col < 0 || row == board.length || col >= board[0].length) {
-            return;
-        }
-        if (node.isWordEnd) {
-            matching.add(node.word);
-            node.isWordEnd = false;
-            return;
-        }
-        if (node.prefixes.containsKey(board[row][col])) {
-            char temp = board[row][col];
-            board[row][col] = '#';
-            visit(board, row, col + 1, node.prefixes.get(temp), matching);
-            visit(board, row, col - 1, node.prefixes.get(temp), matching);
-            visit(board, row - 1, col, node.prefixes.get(temp), matching);
-            visit(board, row + 1, col, node.prefixes.get(temp), matching);
-            board[row][col] = temp;
-        }
-    }
-    
-    public static void main(String[] args)
-    {
-        /**
-         * Input: 
-            board = [
-              ['o','a','a','n'],
-              ['e','t','a','e'],
-              ['i','h','k','r'],
-              ['i','f','l','v']
-            ]
-            words = ["oath","pea","eat","rain"]
-            
-            Output: ["eat","oath"]
-         * 
-         * */
-        
-       // char[][] board = {{'o','a','a','n'},{'e','t','a','e'},{'i','h','k','r'},{'i','f','l','v'}};
-       // String[] words = {"oath","pea","eat","rain"};
-        char[][] board = {{'a'}};
-        String[] words = {"a"};
-        List<String> output = new WordSearchII().findWords(board, words);
-        System.out.println(output);
-    }
+		// char[][] board =
+		// {{'o','a','a','n'},{'e','t','a','e'},{'i','h','k','r'},{'i','f','l','v'}};
+		// String[] words = {"oath","pea","eat","rain"};
+		char[][] board = { { 'a' } };
+		String[] words = { "a" };
+		List<String> output = new WordSearchII().findWords(board, words);
+		System.out.println(output);
+	}
 }
