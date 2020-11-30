@@ -221,7 +221,7 @@ class TLStateConfiguration implements ITLStateConfiguration
 
 }
 
-class TrafficLightDriveer implements TLLight
+class TrafficLightDriver implements TLLight
 {
     private Map<ITrafficLight, TLState> trafficLights;
 
@@ -229,7 +229,7 @@ class TrafficLightDriveer implements TLLight
 
     private AtomicBoolean stop;
 
-    public TrafficLightDriveer(TLStateConfiguration tlConfiguration)
+    public TrafficLightDriver(TLStateConfiguration tlConfiguration)
     {
         this.trafficLights = new HashMap<>();
         this.tlConfiguration = tlConfiguration;
@@ -327,7 +327,7 @@ class TrafficLightDriveer implements TLLight
 
     public static void main(String[] args)
     {
-        TLLight trafficLight = new TrafficLightDriveer(new TLStateConfiguration());
+        TLLight trafficLight = new TrafficLightDriver(new TLStateConfiguration());
         boolean[] defaultAllowedLanes = {true, true, true, true};
         TrafficLight trafficLightLeft = new TrafficLight(TLState.YELLOW, TLPosition.LEFT, defaultAllowedLanes);
         TrafficLight trafficLightRight = new TrafficLight(TLState.YELLOW, TLPosition.RIGHT, defaultAllowedLanes);
