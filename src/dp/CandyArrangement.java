@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CandyArrangement
 {
 
-    public int arrange(int n, int m, int k)
+    public void arrange(int n, int m, int k)
     {
         char[] arr = new char[n + m];
         Arrays.fill(arr, ' ');
@@ -14,7 +14,7 @@ public class CandyArrangement
         place(n-1,m, k, 0, 'R', arr, ans);
         Arrays.fill(arr, ' ');
         place(n, m-1, k, 0, 'B', arr, ans);
-        return ans.get();
+        ans.get();
     }
 
     private void place(int n, int m, int k, int currIdx, char curr, char[] arr, AtomicInteger ans)
@@ -46,10 +46,7 @@ public class CandyArrangement
         while (currIdx > 0 && b-- > 0 && arr[--currIdx] == curr) {
             ++now;
         }
-        if (now < k) {
-            return true;
-        }
-        return false;
+        return now < k;
     }
 
     public static void main(String[] args)

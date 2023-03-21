@@ -11,8 +11,7 @@ public class CartesianTree
     {
         if (inorder.isEmpty())
             return null;
-        TreeNode root = construct(inorder, 0, inorder.size() - 1);
-        return root;
+        return construct(inorder, 0, inorder.size() - 1);
     }
 
     private TreeNode construct(ArrayList<Integer> inorder, int start, int end)
@@ -53,7 +52,7 @@ public class CartesianTree
      *          6
      *      5        4 
      *     3 2      1 0 
-     * 
+     * <p>
      *    [3 5 2 6 1 4 0]
      *
      */

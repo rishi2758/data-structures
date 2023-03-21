@@ -36,12 +36,12 @@ class Node
         return "Node [val=" + val + ", left=" + left + ", right=" + right + ", next=" + next + "]";
     }
     
-};
+}
 
 public class NextPointers
 {
 
-    public Node connect(Node root)
+    public void connect(Node root)
     {
         Queue<Node> enque = new LinkedList<>();
         enque.add(root);
@@ -62,7 +62,6 @@ public class NextPointers
                 }
             }
         }
-        return root;
     }
 
     public static void main(String[] args)

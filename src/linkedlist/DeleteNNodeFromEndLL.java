@@ -32,9 +32,4 @@ public class DeleteNNodeFromEndLL
         slowPtr.next = slowPtr.next.next;
     }
 
-    public static void main(String[] args)
-    {
-
-    }
-
 }

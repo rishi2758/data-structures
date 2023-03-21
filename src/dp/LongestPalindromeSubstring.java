@@ -5,7 +5,7 @@ public class LongestPalindromeSubstring
 
     /**
      * input : "babad" dabab abcdfgdcba abcdgfdcba
-     * 
+     * <p>
      *      #   c   b   b   d
      *   #  0   0   0   0   0
      *   d  0   0   0   0   1

@@ -15,7 +15,7 @@ public class LongestCommonSubstring
     * *  0   0   0   0   0   0   
     * b  0   0   0   1   1   0
     * b  0   0   0   1   2   0
-    * 
+    * <p>
     * */
 
     private int _getLCS(String s1, String s2, int m, int n)

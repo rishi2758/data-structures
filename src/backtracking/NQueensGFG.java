@@ -4,7 +4,7 @@ public class NQueensGFG
 {
     //static int N = 4;
 
-    static boolean isSafe(int board[][], int row, int col)
+    static boolean isSafe(int[][] board, int row, int col)
     {
         int i, j;
         for (i = 0; i < col; i++)
@@ -22,7 +22,7 @@ public class NQueensGFG
         return true;
     }
 
-    static boolean solveNQUtil(int board[][], int col)
+    static boolean solveNQUtil(int[][] board, int col)
     {
         if (col >= board.length)
             return true;
@@ -31,7 +31,7 @@ public class NQueensGFG
             if (isSafe(board, i, col)) {
                 board[i][col] = 1;
 
-                if (solveNQUtil(board, col + 1) == true)
+                if (solveNQUtil(board, col + 1))
                     return true;
 
                 board[i][col] = 0; // BACKTRACK
@@ -43,14 +43,14 @@ public class NQueensGFG
 
     public static void main(String[] args)
     {
-        int board[][] = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
+        int[][] board = {{0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}, {0, 0, 0, 0}};
 
-        if (solveNQUtil(board, 0) == false) {
+        if (!solveNQUtil(board, 0)) {
             System.out.print("Solution does not exist");
         }
-        for (int i = 0; i < board.length; i++) {
+        for (int[] ints : board) {
             for (int j = 0; j < board[0].length; j++)
-                System.out.print(" " + board[i][j] + " ");
+                System.out.print(" " + ints[j] + " ");
             System.out.println();
         }
     }

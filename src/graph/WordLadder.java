@@ -13,9 +13,10 @@ import java.util.Set;
 public class WordLadder
 {
     
-    class GraphNode {
-        int level;
-        String word;
+    @SuppressWarnings("InnerClassMayBeStatic")
+    static class GraphNode {
+        final int level;
+        final String word;
         
         public GraphNode(String word, int level) {
             this.word = word;
@@ -27,7 +28,7 @@ public class WordLadder
     {
 
         Set<String> words = new HashSet<>();
-        wordList.forEach(word -> words.add(word));
+        wordList.forEach(words::add);
 
         if (!words.contains(endWord))
             return 0;

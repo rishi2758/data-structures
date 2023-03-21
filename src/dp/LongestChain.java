@@ -1,8 +1,8 @@
 package dp;
 
 class Pair {
-    int e1;
-    int e2;
+    final int e1;
+    final int e2;
     
     public Pair(int e1,int e2) {
         this.e1 = e1;
@@ -14,32 +14,29 @@ public class LongestChain
 {
     
     /**
-     * 
      * {
-     *          [1,2] [2,3] [3,4]
-     *  [1,2]     0     1     1  
-     *  [2,3]     0     1     2  
-     *  [3,4]     0     1     2   
+     * [1,2] [2,3] [3,4]
+     * [1,2]     0     1     1
+     * [2,3]     0     1     2
+     * [3,4]     0     1     2
      * }
-     * 
-     * 
+     * <p>
+     * <p>
      * {
-     *          [5,24] [39,60] [15,28] [27,40] [50,90]
-     *  [5,24]    0       1       1       1       1  
-     *  [39,60]   0       0       0       1       1 
-     *  [15,28]   1           
-     *  [27,40] 
-     *  [50,90]
-     * 
+     * [5,24] [39,60] [15,28] [27,40] [50,90]
+     * [5,24]    0       1       1       1       1
+     * [39,60]   0       0       0       1       1
+     * [15,28]   1
+     * [27,40]
+     * [50,90]
+     * <p>
      * }
-     * 
-     * 
-     * */
+     */
     
-    public static int getLongestChainLength(int[][] pairs) {
+    public static void getLongestChainLength(int[][] pairs) {
         
         if(pairs == null || pairs.length == 0 || pairs[0].length == 0) {
-            return -1;
+            return;
         }
         Pair[] pairNodes = new Pair[pairs.length];
         for (int i = 0; i < pairs.length; i++) {
@@ -53,8 +50,7 @@ public class LongestChain
                }      
             }
         }
-        
-        return -1;
+
     }
     
     public static void main(String[] args)

@@ -32,9 +32,4 @@ public class DiagonalElements
         _solve(root.right, currentDiagonal, diagonalMap);
     }
 
-    public static void main(String[] args)
-    {
-
-    }
-
 }

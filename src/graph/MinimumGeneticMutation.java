@@ -9,11 +9,13 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
+@SuppressWarnings("ALL")
 public class MinimumGeneticMutation
 {
-    class GraphNode {
-        int level;
-        String word;
+    @SuppressWarnings("InnerClassMayBeStatic")
+    static class GraphNode {
+        final int level;
+        final String word;
         
         public GraphNode(String word, int level) {
             this.word = word;

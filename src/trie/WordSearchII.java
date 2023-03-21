@@ -8,7 +8,7 @@ import trie.core.TrieNode;
 public class WordSearchII {
 	public List<String> findWords(char[][] board, String[] words) {
 
-		/** construct trie for given words **/
+		/* construct trie for given words **/
 		TrieNode<String> root = new TrieNode<>();
 		for (String word : words) {
 			TrieNode<String> node = root;
@@ -64,17 +64,14 @@ public class WordSearchII {
 	}
 
 	public static void main(String[] args) {
-		/**
-		 * Input: board = [ ['o','a','a','n'], ['e','t','a','e'], ['i','h','k','r'],
-		 * ['i','f','l','v'] ] words = ["oath","pea","eat","rain"]
-		 * 
-		 * Output: ["eat","oath"]
-		 * 
+		/*
+		  Input: board = [ ['o','a','a','n'], ['e','t','a','e'], ['i','h','k','r'],
+		  ['i','f','l','v'] ] words = ["oath","pea","eat","rain"]
+		  <p>
+		  Output: ["eat","oath"]
+
 		 */
 
-		// char[][] board =
-		// {{'o','a','a','n'},{'e','t','a','e'},{'i','h','k','r'},{'i','f','l','v'}};
-		// String[] words = {"oath","pea","eat","rain"};
 		char[][] board = { { 'a' } };
 		String[] words = { "a" };
 		List<String> output = new WordSearchII().findWords(board, words);

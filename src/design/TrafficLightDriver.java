@@ -50,7 +50,7 @@ enum TLPosition
     FRONT,
     BACK,
     LEFT,
-    RIGHT;
+    RIGHT
 
 }
 
@@ -84,7 +84,7 @@ interface ITrafficLight
 class TLDisplay
 {
 
-    private boolean[] allowedLanes;
+    private final boolean[] allowedLanes;
 
     public TLDisplay(boolean[] allowedLanes)
     {
@@ -129,18 +129,15 @@ class TrafficLight implements ITrafficLight
 
     private TLState currentState;
 
-    private TLPosition tlPosition;
+    private final TLPosition tlPosition;
 
-    private TLDisplay display;
-
-    // this will provide the mechanism for identifying which lanes are allowed false(default) means its either a
-    // redsignal or traffic light isn't powered up.
-    private boolean[] allowedLanes;
+    private final TLDisplay display;
 
     public TrafficLight(TLState initialState, TLPosition tlPosition, boolean[] defaultAllowedLanes)
     {
         this.currentState = initialState;
-        this.allowedLanes = defaultAllowedLanes;
+        // this will provide the mechanism for identifying which lanes are allowed false(default) means its either a
+        // redsignal or traffic light isn't powered up.
         this.tlPosition = tlPosition;
         this.display = new TLDisplay(defaultAllowedLanes);
     }
@@ -173,7 +170,6 @@ class TrafficLight implements ITrafficLight
     public void display()
     {
         this.display.display();
-        ;
     }
 
 }
@@ -188,9 +184,9 @@ interface ITLStateConfiguration
 class TLStateConfiguration implements ITLStateConfiguration
 {
 
-    private Map<TLState, Long> durationConfig;
+    private final Map<TLState, Long> durationConfig;
 
-    private Queue<TLPosition> executionOrder;
+    private final Queue<TLPosition> executionOrder;
 
     public TLStateConfiguration()
     {
@@ -223,11 +219,11 @@ class TLStateConfiguration implements ITLStateConfiguration
 
 class TrafficLightDriver implements TLLight
 {
-    private Map<ITrafficLight, TLState> trafficLights;
+    private final Map<ITrafficLight, TLState> trafficLights;
 
-    private TLStateConfiguration tlConfiguration;
+    private final TLStateConfiguration tlConfiguration;
 
-    private AtomicBoolean stop;
+    private final AtomicBoolean stop;
 
     public TrafficLightDriver(TLStateConfiguration tlConfiguration)
     {

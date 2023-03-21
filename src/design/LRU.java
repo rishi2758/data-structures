@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 class Node
 {
-    int key;
+    final int key;
 
     int value;
 
@@ -21,11 +21,13 @@ class Node
 
 class LRUCache
 {
-    private HashMap<Integer, Node> map;
+    private final HashMap<Integer, Node> map;
 
-    private int capicity, count;
+    private final int capicity;
+    private int count;
 
-    private Node head, tail;
+    private final Node head;
+    private final Node tail;
 
     public LRUCache(int capacity)
     {

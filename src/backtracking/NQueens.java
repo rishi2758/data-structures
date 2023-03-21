@@ -13,12 +13,9 @@ public class NQueens
             return null;
         char[][] board = new char[queens][queens];
         // indicate whether placement is done or not.
-        for (int i = 0; i < board.length; i++) {
-            Arrays.fill(board[i], '.');
+        for (char[] chars : board) {
+            Arrays.fill(chars, '.');
         }
-        //List<List<String>> validPlacements = new ArrayList<>();
-        //_placeQueens(board, 0,validPlacements);
-        //validPlacements.forEach(System.out::println);
         System.out.println("total Placements : "+_placeQueens(board, 0));
         return board;
     }
@@ -27,10 +24,10 @@ public class NQueens
     {
         if (col >= board.length) {
             List<String> result = new ArrayList<>();
-            for (int u = 0; u < board.length; u++) {
+            for (char[] chars : board) {
                 StringBuilder eachRow = new StringBuilder();
                 for (int v = 0; v < board[0].length; v++) {
-                    eachRow.append(board[u][v]);
+                    eachRow.append(chars[v]);
                 }
                 result.add(eachRow.toString());
             }
@@ -89,9 +86,9 @@ public class NQueens
     {
         char[][] queensPlaced = new NQueens().placeQueens(3);
 
-        for (int i = 0; i < queensPlaced.length; i++) {
+        for (char[] chars : queensPlaced) {
             for (int j = 0; j < queensPlaced[0].length; j++) {
-                System.out.print(queensPlaced[i][j]);
+                System.out.print(chars[j]);
             }
             System.out.println();
         }
