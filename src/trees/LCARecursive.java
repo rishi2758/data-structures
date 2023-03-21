@@ -37,9 +37,4 @@ public class LCARecursive implements LCA
         return leftLca != null ?leftLca : rightLca;
     }
 
-    public static void main(String[] args)
-    {
-
-    }
-
 }

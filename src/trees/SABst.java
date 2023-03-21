@@ -3,9 +3,10 @@ package trees;
 public class SABst
 {
 
-    class TreeNodeAVL  {
+    @SuppressWarnings("InnerClassMayBeStatic")
+    static class TreeNodeAVL  {
         
-        int data;
+        final int data;
         int height;
         TreeNodeAVL left;
         TreeNodeAVL right;
@@ -19,8 +20,8 @@ public class SABst
     public TreeNodeAVL sortedArrayToBST(final int[] a)
     {
         TreeNodeAVL root = null;
-        for (int i = 0; i < a.length; i++) {
-            insert(root, a[i]);
+        for (int j : a) {
+            insert(root, j);
         }
         return root;
     }

@@ -34,7 +34,7 @@ public class ProductExceptSelf
     public static void main(String[] args)
     {
 
-        int nums[] = {0,1};
+        int[] nums = {0,1};
         int[] res = new ProductExceptSelf().productExceptSelf(nums);
         for(Integer i : res) {
             System.out.print(i+"-");

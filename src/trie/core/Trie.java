@@ -10,10 +10,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Trie {
 
-	private TrieNode<Character> root;
+	private final TrieNode<Character> root;
 
 	public Trie() {
-		this.root = new TrieNode<Character>();
+		this.root = new TrieNode<>();
 	}
 
 	public void insert(String word) {
@@ -26,7 +26,7 @@ public class Trie {
 			if (traverse.getPrefixes().containsKey(currChar)) {
 				traverse = traverse.getPrefixes().get(currChar);
 			} else {
-				TrieNode<Character> node = new TrieNode<Character>();
+				TrieNode<Character> node = new TrieNode<>();
 				node.setWord(currChar);
 				traverse.getPrefixes().put(currChar, node);
 				traverse = node;

@@ -13,10 +13,10 @@ public class CheatDay
     public int cheatPath(int n, int[][] sitting, int k, int[] favouriteStudents)
     {
         Map<Integer, ArrayList<Integer>> arrangement = new HashMap<>();
-        for (int i = 0; i < sitting.length; i++) {
-            ArrayList<Integer> child = arrangement.getOrDefault(sitting[i][0], new ArrayList<>(2));
-            child.add(sitting[i][1]);
-            arrangement.put(sitting[i][0], child);
+        for (int[] ints : sitting) {
+            ArrayList<Integer> child = arrangement.getOrDefault(ints[0], new ArrayList<>(2));
+            child.add(ints[1]);
+            arrangement.put(ints[0], child);
         }
         Set<Integer> fav = new HashSet<>();
         for (int i = 0; i < k; i++) {

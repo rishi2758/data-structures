@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class FirstMissing
 {
 
-    public int firstMissingPositive(ArrayList<Integer> A)
+    public void firstMissingPositive(ArrayList<Integer> A)
     {
         int n = A.size();
         int start = 0;
@@ -23,10 +23,9 @@ public class FirstMissing
         }
         for (int i = 0; i < n; i++) {
             if (A.get(i) < 0 || A.get(i) > n) {
-                return i;
+                return;
             }
         }
-        return -1;
     }
 
     public static void main(String[] args)

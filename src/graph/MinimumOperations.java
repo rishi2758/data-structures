@@ -6,8 +6,8 @@ import java.util.Queue;
 import java.util.Set;
 
 class GNode {
-    int data;
-    int steps;
+    final int data;
+    final int steps;
     public GNode (int data,int steps) {
         this.data = data;
         this.steps = steps;

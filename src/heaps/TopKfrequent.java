@@ -8,7 +8,8 @@ import java.util.PriorityQueue;
 
 public class TopKfrequent
 {
-    class Element {
+    @SuppressWarnings("InnerClassMayBeStatic")
+    static class Element {
         int num;
         int freq;
     }
@@ -28,7 +29,8 @@ public class TopKfrequent
         return kFrequent;
     }
     
-    class EntryComparator implements Comparator<Map.Entry<Integer,Integer>> {
+    @SuppressWarnings("InnerClassMayBeStatic")
+    static class EntryComparator implements Comparator<Map.Entry<Integer,Integer>> {
 
         @Override
         public int compare(Entry<Integer, Integer> o1, Entry<Integer, Integer> o2)

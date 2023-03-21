@@ -1,13 +1,14 @@
 package stack;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Stack;
 
 public class Deque<T> implements java.util.Deque<T>
 {
-    private Stack<T> frontStack;
-    private Stack<T> backStack;
+    private final Stack<T> frontStack;
+    private final Stack<T> backStack;
 
     public Deque()
     {
@@ -31,7 +32,7 @@ public class Deque<T> implements java.util.Deque<T>
     @Override
     public boolean containsAll(Collection<?> c)
     {
-        return frontStack.containsAll(c) || backStack.containsAll(c);
+        return new HashSet<>(frontStack).containsAll(c) || new HashSet<>(backStack).containsAll(c);
     }
 
     @Override
