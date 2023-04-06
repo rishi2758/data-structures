@@ -50,7 +50,7 @@ public class QuickUnionUF {
      * you are given two trees, you need to place radium tape put around the bark of the trees.
      *
      * not a very good example though , but it might help...:p
-     * 
+     *
      * first you need to find the tree itself & then find it's root
      * then check is this root belongs to same band connecting the root of the other tree provided
      * if yes don't need to do anything just return.
@@ -82,6 +82,20 @@ public class QuickUnionUF {
      * Coming to worst case scenarios , both the approaches lead to trees with increased height and width.
      *
      * WeightQuickUnion solves this problem , refer to other code.
+     *
+     * Time Complexity and Space Complexity for both
+     * Quick Union & Find algorithm still remains the same O(N^2) and O(N)
+     * but amortized analysis reveals the quick union can be faster than quick find
+     * in certain cases where quick union's union operation consists of find operation
+     * which the time complexity of O(n) but it could be less than that.(because of number of groups increases)
+     * finding root doesn't leads to access to all n elements.
+     *
+     * whereas in quick union's union operation every element is accessed to perform union operation
+     * because it checks union condition within for loop putting each element in another set on by one
+     * i.e. changing ids simultaneously.
+     *
+     * in this case find only traverses lesser number of elements and then changes its ids.
+     * find(p) & find(q).
      * */
     public void union(int p, int q) {
         int pID = find(p);
