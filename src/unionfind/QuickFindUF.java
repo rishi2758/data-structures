@@ -33,6 +33,13 @@ public class QuickFindUF {
         }
     }
 
+    /**
+     * Visualise this as every element in component containing p
+     * is going inside the other component containing q one by one
+     * hence the for-loop.
+     *
+     * we will be contrasting this approach in quick union algorithm.
+     * */
     public void union(int p, int q) {
         validate(p);
         validate(q);
@@ -63,7 +70,7 @@ public class QuickFindUF {
          *    keep in mind qID can be used as ids[q] directly, why ? because second component is
          *    not mutating it is just being read.
          *    i.e. if you change line 75 with ids[i] = ids[q], it won't make any difference.
-         * 
+         *
         * */
         int pID = ids[p];
         int qID = ids[q];
