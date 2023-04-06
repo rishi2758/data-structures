@@ -1,12 +1,11 @@
 package unionfind;
 
-public class UnionFind {
-
+public class QuickFindUF {
     private int n;
     private int[] ids;
     private int count;
 
-    public UnionFind(int n) {
+    public QuickFindUF(int n) {
         this.n = n;
         count = n;
         ids = new int[n + 1];
@@ -16,21 +15,35 @@ public class UnionFind {
     }
 
     public void union(int p, int q) {
-        int idP = ids[p];
-        int idQ = ids[q];
-        for (int i = 0; i < ids.length; i++) {
-            if (ids[i] == idP) {
-                ids[i] = idQ;
+        validate(p);
+        validate(q);
+
+        int pID = ids[p];
+        int qID = ids[q];
+
+        if (pID == qID) return;
+
+        for (int i = 0; i < n; i++) {
+            if (ids[i] == pID) {
+                ids[i] = qID;
             }
         }
+        count--;
     }
 
     public int find(int i) {
+        validate(i);
         return ids[i];
     }
 
     public boolean connected(int i, int j) {
+        validate(i);
+        validate(j);
         return ids[i] == ids[j];
+    }
+
+    public int getCount() {
+        return this.count;
     }
 
     private void validate(int i) {
@@ -38,9 +51,4 @@ public class UnionFind {
             throw new IllegalArgumentException();
         }
     }
-
-    public static void main(String[] args) {
-
-    }
-
 }
