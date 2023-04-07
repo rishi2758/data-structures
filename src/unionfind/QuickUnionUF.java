@@ -1,5 +1,30 @@
 package unionfind;
 
+/**
+ * This is a lazy approach as not every element's id gets changed
+ * while performing union operation.
+ *
+ * Motivation:
+ * Reference : Algorithms By Robert Sedgewick & Kevin Wayne.
+ * Dynamic connectivity.
+ *
+ * The input is a sequence of pairs of integers,
+ * where each integer represents an object of some type
+ * & we are to interpret the pair p q as meaning p is connected to q.
+ *
+ * We assume that "is connected to" is an equivalence relation:
+ * symmetric: If p is connected to q, then q is connected to p.
+ * transitive: If p is connected to q and q is connected to r, then p is connected to r.
+ * reflexive: p is connected to p.
+ *
+ * An equivalence relation partitions the objects into equivalence classes or connected components.
+ * Our goal is to write a program to filter out extraneous pairs from the sequence:
+ * When the program reads a pair p q from the input,
+ * it should write the pair to the output only if the pairs it has seen to that point do not imply that p is connected to q.
+ * If the previous pairs do imply that p is connected to q,
+ * then the program should ignore the pair p q and proceed to read in the next pair.
+ *
+ * */
 public class QuickUnionUF {
 
     private int[] parent;
