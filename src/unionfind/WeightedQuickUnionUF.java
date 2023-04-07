@@ -25,11 +25,11 @@ public class WeightedQuickUnionUF {
 
         if (parentP == parentQ) return;
         if (size[parentP] < size[parentQ]) {
-            parent[q] = parentP;
-            size[q] += size[parentP];
+            parent[parentP] = parentQ;
+            size[parentQ] += size[parentP];
         } else {
-            parent[p] = parentQ;
-            size[p] += size[parentQ];
+            parent[parentQ] = parentP;
+            size[parentP] += size[parentQ];
         }
         --count;
     }
