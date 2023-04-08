@@ -1,6 +1,6 @@
 package rangequery;
 
-import dsalgo.fastIo.FastReader;
+import fastIo.FastReader;
 
 import java.io.*;
 
@@ -67,7 +67,7 @@ public class SumAsPerFrequency {
         }
     }
 
-    public static void readInput() {
+    public static void readInput() throws IOException {
 
         FastReader reader = new FastReader();
         int n = reader.nextInt();

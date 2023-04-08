@@ -1,6 +1,6 @@
 package trees;
 
-import dsalgo.trees.SerializeandDesrializeTree.TreeNode;
+import trees.SerializeandDesrializeTree.TreeNode;
 
 public class PathSumII {
 

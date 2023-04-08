@@ -1,7 +1,7 @@
 package misc;
 
-import dsalgo.linkedlist.DoublyLinkedList;
-import dsalgo.linkedlist.DoublyLinkedList.Node;
+import linkedlist.DoublyLinkedList;
+import linkedlist.DoublyLinkedList.Node;
 
 import java.util.HashMap;
 import java.util.TreeMap;
