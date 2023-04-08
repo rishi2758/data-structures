@@ -25,13 +25,13 @@ package unionfind;
  * then the program should ignore the pair p q and proceed to read in the next pair.
  *
  * */
-public class QuickUnionUF {
+public class QuickUnion implements UnionFind {
 
-    private int[] parent;
+    protected int[] parent;
     private int n;
-    private int count;
+    protected int count;
 
-    public QuickUnionUF(int n) {
+    public QuickUnion(int n) {
         this.parent = new int[n];
         this.n = n;
         this.count = n;
@@ -54,6 +54,11 @@ public class QuickUnionUF {
         int qID = find(q);
 
         return pID == qID;
+    }
+
+    @Override
+    public int componentCount() {
+        return this.count;
     }
 
 
@@ -130,11 +135,7 @@ public class QuickUnionUF {
         count--;
     }
 
-    public int getCount() {
-        return this.count;
-    }
-
-    private void validate(int p) {
+    protected void validate(int p) {
         if(p < 0 || p >= n) {
             throw new IllegalArgumentException("Invalid id "+p+" provided");
         }

@@ -19,12 +19,12 @@ package unionfind;
  *
 **/
 
-public class QuickFindUF {
+public class QuickFind implements UnionFind{
     private int n;
     private int[] ids;
     private int count;
 
-    public QuickFindUF(int n) {
+    public QuickFind(int n) {
         this.n = n;
         count = n;
         ids = new int[n + 1];
@@ -96,7 +96,8 @@ public class QuickFindUF {
         return ids[i] == ids[j];
     }
 
-    public int getCount() {
+    @Override
+    public int componentCount() {
         return this.count;
     }
 
