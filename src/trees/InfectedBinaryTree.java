@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-import dsalgo.trees.SerializeandDesrializeTree.TreeNode;
+import trees.SerializeandDesrializeTree.TreeNode;
 
 public class InfectedBinaryTree {
 

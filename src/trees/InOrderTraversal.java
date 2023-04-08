@@ -3,7 +3,7 @@ package trees;
 import java.util.ArrayList;
 import java.util.List;
 
-import dsalgo.trees.SerializeandDesrializeTree.TreeNode;
+import trees.SerializeandDesrializeTree.TreeNode;
 
 public class InOrderTraversal {
 

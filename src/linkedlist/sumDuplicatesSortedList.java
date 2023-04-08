@@ -1,6 +1,6 @@
 package linkedlist;
 
-import dsalgo.misc.PalindromeList;
+import misc.PalindromeList;
 
 public class sumDuplicatesSortedList {
 
