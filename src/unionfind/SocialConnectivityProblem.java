@@ -28,7 +28,8 @@ public class SocialConnectivityProblem {
     public String getEarliestTimeStamp() throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(new File("/Users/rissingh/Github/personal/data-structures/src/unionfind/socialConnectivity.log")));
         int n = Integer.parseInt(br.readLine());
-        WeightedQuickUnionUF qu = new WeightedQuickUnionUF(n);
+        WeightedQuickUnion qu = new WeightedQuickUnion(n);
+
         while (n > 0) {
             String[] input = br.readLine().split(" ");
             int p = Integer.parseInt(input[0]);
