@@ -29,6 +29,7 @@ public class SocialConnectivityProblem {
         BufferedReader br = new BufferedReader(new FileReader(new File("/Users/rissingh/Github/personal/data-structures/src/unionfind/socialConnectivity.log")));
         int n = Integer.parseInt(br.readLine());
         WeightedQuickUnion qu = new WeightedQuickUnion(n);
+
         while (n > 0) {
             String[] input = br.readLine().split(" ");
             int p = Integer.parseInt(input[0]);
