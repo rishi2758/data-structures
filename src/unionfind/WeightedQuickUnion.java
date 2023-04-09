@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class WeightedQuickUnion extends QuickUnion {
 
-    private int[] size;
+    protected int[] size;
 
     public WeightedQuickUnion(int n) {
         super(n);

@@ -28,7 +28,7 @@ package unionfind;
 public class QuickUnion implements UnionFind {
 
     protected int[] parent;
-    private int n;
+    protected int n;
     protected int count;
 
     public QuickUnion(int n) {
